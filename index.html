@@ -1,0 +1,38 @@
+<script>
+	const number = 1 + Math.floor(Math.random() * 100)
+	let guessedNumberWasGreaterThanNumber = false
+	let guessedNumberWasSmallerThanNumber = false
+	let guessedNumber
+	do {
+		const promptText = generatePromptText(
+			guessedNumberWasGreaterThanNumber,
+			guessedNumberWasSmallerThanNumber
+		)
+		guessedNumber = Number(prompt(promptText))
+		if (guessedNumber < number) {
+			guessedNumberWasGreaterThanNumber = false
+			guessedNumberWasSmallerThanNumber = true
+		} else if (guessedNumber > number) {
+			guessedNumberWasGreaterThanNumber = true
+			guessedNumberWasSmallerThanNumber = false
+		}
+	} while (guessedNumber !== number)
+
+	alert('Guessed correctly!')
+
+	function generatePromptText(
+		guessedNumberWasGreaterThanNumber,
+		guessedNumberWasSmallerThanNumber,
+	) {
+		let promptText = ''
+		if (guessedNumberWasGreaterThanNumber) {
+			promptText += 'guessedNumber > number. '
+		}
+		if (guessedNumberWasSmallerThanNumber) {
+			promptText += 'guessedNumber < number. '
+		}
+		promptText += 'Guess: '
+		return promptText
+	}
+</script>
+
