@@ -3,22 +3,28 @@
 	let guessedNumberWasGreaterThanNumber = false
 	let guessedNumberWasSmallerThanNumber = false
 	let guessedNumber
+  let input
 	do {
 		const promptText = generatePromptText(
 			guessedNumberWasGreaterThanNumber,
 			guessedNumberWasSmallerThanNumber
 		)
-		guessedNumber = Number(prompt(promptText))
-		if (guessedNumber < number) {
-			guessedNumberWasGreaterThanNumber = false
-			guessedNumberWasSmallerThanNumber = true
-		} else if (guessedNumber > number) {
-			guessedNumberWasGreaterThanNumber = true
-			guessedNumberWasSmallerThanNumber = false
-		}
-	} while (guessedNumber !== number)
+    input = prompt(promptText)
+    if (input) {
+      guessedNumber = Number(input)
+      if (guessedNumber < number) {
+        guessedNumberWasGreaterThanNumber = false
+        guessedNumberWasSmallerThanNumber = true
+      } else if (guessedNumber > number) {
+        guessedNumberWasGreaterThanNumber = true
+        guessedNumberWasSmallerThanNumber = false
+      }
+    }
+	} while (input && guessedNumber !== number)
 
-	alert('Guessed correctly!')
+  if (guessedNumber === number) {
+	  alert('Guessed correctly!')
+  }
 
 	function generatePromptText(
 		guessedNumberWasGreaterThanNumber,
